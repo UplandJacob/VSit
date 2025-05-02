@@ -7,7 +7,7 @@ players:
     - "SOME_CUSTOM_DISABLED_WORLD"
 
 blocks:
-  enabled: 
+  enabled: true
   require-empty-hand: false
   right-click: true
   left-click: false
