@@ -31,7 +31,7 @@ jobs:
           echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
           cp "$JAR_FILE" ./VSit.jar
       - name: Upload jar
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: VSit.jar
+          name: VSit_build
           path: VSit.jar
