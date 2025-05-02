@@ -25,3 +25,13 @@ jobs:
         run: |
           ./gradlew clean cleanCache
           ./gradlew shadowJar --no-daemon --stacktrace 
+      - name: Find and Copy Jar
+        run: |
+          JAR_FILE=$(find build/libs -name "*.jar" -type f | head -n 1)
+          echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
+          cp "$JAR_FILE" ./VSit.jar
+      - name: Upload jar
+        uses: actions/upload-artifact@v2
+        with:
+          name: VSit.jar
+          path: VSit.jar
