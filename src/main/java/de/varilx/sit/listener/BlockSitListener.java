@@ -4,6 +4,7 @@ import de.varilx.BaseAPI;
 import de.varilx.configuration.VaxConfiguration;
 import de.varilx.sit.VSit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.ArmorStand;
@@ -38,6 +39,10 @@ public class BlockSitListener implements Listener {
         if (configuration.getStringList("blocks.blocked-worlds").contains(block.getWorld().getName())) return;
         Player player = event.getPlayer();
         if (player.isSneaking()) return;
+        if (configuration.getBoolean("require-empty-hand")) {
+            Material mat = player.getItemInHand().getType();
+            if (mat != Material.AIR) return;
+        }
         
         for (String blockStr : configuration.getStringList("blocks.blocks")) {
             if (block.getType().name().toLowerCase().contains(blockStr.toLowerCase())) {
