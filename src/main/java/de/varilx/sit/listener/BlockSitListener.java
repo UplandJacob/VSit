@@ -39,7 +39,7 @@ public class BlockSitListener implements Listener {
         if (configuration.getStringList("blocks.blocked-worlds").contains(block.getWorld().getName())) return;
         Player player = event.getPlayer();
         if (player.isSneaking()) return;
-        if (configuration.getBoolean("require-empty-hand")) {
+        if (configuration.getBoolean("blocks.require-empty-hand")) {
             Material mat = player.getItemInHand().getType();
             if (mat != Material.AIR) return;
         }
