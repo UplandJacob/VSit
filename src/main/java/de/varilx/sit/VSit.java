@@ -56,7 +56,7 @@ public final class VSit extends JavaPlugin {
     }
 
     private double getHeight(@Nullable Block clickedBlock) {
-        return clickedBlock.getBoundingBox().getHeight();
+        return 1.0-(clickedBlock.getBoundingBox().getHeight()-0.2);
     }
 
 }
