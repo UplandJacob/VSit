@@ -44,6 +44,7 @@ public class BlockSitListener implements Listener {
                 if (!configuration.getBoolean("blocks.right-click") && event.getAction() == Action.RIGHT_CLICK_BLOCK) return;
                 if (!configuration.getBoolean("blocks.left-click") && event.getAction() == Action.LEFT_CLICK_BLOCK) return;
                 plugin.sitDown(player, block, false);
+                return;
             }
         }
     }
