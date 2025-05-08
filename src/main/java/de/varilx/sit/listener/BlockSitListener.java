@@ -52,7 +52,7 @@ public class BlockSitListener implements Listener {
     public void onVehicleExit(EntityDismountEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!(event.getDismounted() instanceof ArmorStand stand)) return;
-        player.teleportAsync(player.getLocation().add(0, 1, 0));
+        player.teleportAsync(player.getLocation().add(0, 1.2, 0));
         stand.remove();
     }
 
