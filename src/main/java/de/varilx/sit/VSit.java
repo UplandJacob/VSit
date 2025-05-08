@@ -58,7 +58,7 @@ public final class VSit extends JavaPlugin {
     }
     private float getNewStandYaw(Player player) {
         float yaw = player.getLocation().getYaw() + 180; // get yaw facing opposite the player
-        return Math.round( ((yaw > 180) ? yaw : yaw-360) / 90) * 90; // make sure it isn't over 180 and round to nearest 90 degrees
+        return Math.round( ((yaw > 180) ? yaw : yaw-360) / 90) * 90; // make sure it isn't over 180 and round to nearest 90 degrees
     }
 
 }
