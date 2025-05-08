@@ -43,7 +43,7 @@ public final class VSit extends JavaPlugin {
 
     public void sitDown(Player player, Block block, boolean command) {
         if (block.getRelative(BlockFace.UP).getType().isCollidable()) return;
-        ArmorStand armorStand = block.getWorld().spawn(block.getLocation().add(0.5, (command ? 0.2:0)+getHeight(block), 0.5), ArmorStand.class, (stand) -> {
+        ArmorStand armorStand = block.getWorld().spawn(block.getLocation().add(0.5, (command ? 0.2:0)+getHeight(block), 0.5).setYaw(getNewStandYaw(player)), ArmorStand.class, (stand) -> {
             stand.setCanMove(false);
             stand.setInvisible(true);
             stand.setInvulnerable(true);
@@ -54,7 +54,11 @@ public final class VSit extends JavaPlugin {
     }
 
     private double getHeight(@Nullable Block clickedBlock) {
-        return clickedBlock.getBoundingBox().getHeight()-1.7;
+        return clickedBlock.getBoundingBox().getHeight()-1.7; // get height of block and adjust for the armor stand
+    }
+    private float getNewStandYaw(Player player) {
+        float yaw = player.getLocation().getYaw() + 180; // get yaw facing opposite the player
+        return Math.round( ((yaw > 180) ? yaw : yaw-360) / 90) * 90; // make sure it isn't over 180 and round to nearest 90 degrees
     }
 
 }
