@@ -11,6 +11,7 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -43,7 +44,9 @@ public final class VSit extends JavaPlugin {
 
     public void sitDown(Player player, Block block, boolean command) {
         if (block.getRelative(BlockFace.UP).getType().isCollidable()) return;
-        ArmorStand armorStand = block.getWorld().spawn(block.getLocation().add(0.5, (command ? 0.2:0)+getHeight(block), 0.5).setYaw(getNewStandYaw(player)), ArmorStand.class, (stand) -> {
+        Location loc = block.getLocation().add(0.5, (command ? 0.2:0)+getHeight(block), 0.5);
+        loc.setYaw(getNewStandYaw(player));
+        ArmorStand armorStand = block.getWorld().spawn(loc, ArmorStand.class, (stand) -> {
             stand.setCanMove(false);
             stand.setInvisible(true);
             stand.setInvulnerable(true);
