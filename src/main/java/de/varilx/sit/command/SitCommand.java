@@ -34,7 +34,7 @@ public class SitCommand {
                                 // Check if they can sit down normally (in the block)
                                 for (String block : configuration.getStringList("blocks.blocks")) {
                                     if (blockBelow.getType().name().toLowerCase().contains(block.toLowerCase())) {
-                                        plugin.sitDown(player, blockBelow, false);
+                                        plugin.sitDown(player, blockBelow, true);
                                         player.sendMessage(LanguageUtils.getMessage("commands.sit"));
                                         return 1;
                                     }

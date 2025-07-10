@@ -45,6 +45,7 @@ public class BlockSitListener implements Listener {
                 if (!configuration.getBoolean("blocks.right-click") && event.getAction() == Action.RIGHT_CLICK_BLOCK) return;
                 if (!configuration.getBoolean("blocks.left-click") && event.getAction() == Action.LEFT_CLICK_BLOCK) return;
                 plugin.sitDown(player, block, false);
+                return;
             }
         }
     }
@@ -53,7 +54,7 @@ public class BlockSitListener implements Listener {
     public void onVehicleExit(EntityDismountEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!(event.getDismounted() instanceof ArmorStand stand)) return;
-        player.teleportAsync(player.getLocation().add(0, 1.2, 0));
+        player.teleportAsync(player.getLocation().add(0, 1.4, 0));
         stand.remove();
     }
 
